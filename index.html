@@ -11,7 +11,7 @@
 </head>
 <body>
 
-    <!-- Header Navigasi Atas (Sesuai web utama ferwap.com) -->
+    <!-- Header Navigasi Atas -->
     <section class="hero-container">
         <nav class="main-nav">
             <div class="brand-group-left">
@@ -20,7 +20,23 @@
                     <span class="sub-brand-text" style="color: #fff; font-weight: bold; letter-spacing: 1px; margin-top: 5px; font-size: 0.85rem;">FERWAP MUSIC</span>
                 </a>
             </div>
-            
+
+            <div class="dropdown">
+                <a href="#" class="drop-btn">About <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem; margin-left: 4px;"></i></a>
+                <div class="dropdown-content">
+                    <a href="https://ferwap.com/artists">Featured Artists</a>
+                    <a href="https://ferwap.com/executives">Executives</a>
+                    <a href="https://ferwap.com/contacts">Contacts</a>
+                    <a href="https://metadata.ferwap.com">Admin Portal</a>
+                    <a href="https://ferwap.com/privacy">Privacy Policy</a>
+                </div>
+            </div>
+            <a href="https://ferwap.com/news">News</a>
+            <a href="https://ferwap.com/artists">Artists</a>
+            <a href="https://ferwap.com/faq">FAQ</a>
+        </nav>
+    </section>
+
     <!-- Area Konten Utama -->
     <div class="admin-container">
 
@@ -30,7 +46,7 @@
             <p>Please enter your password to access internal label metadata.</p>
             <form onsubmit="handleLogin(event)">
                 <input type="password" id="adminPass" placeholder="Password" required>
-                <button type="submit">Log In </button>
+                <button type="submit">Log In to Portal</button>
             </form>
         </div>
 
@@ -47,34 +63,18 @@
                     <i class="fa-solid fa-right-from-bracket" style="margin-right: 5px;"></i> Log Out
                 </button>
             </div>
-            
-            <div class="dropdown">
-                <a href="#" class="drop-btn">About <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem; margin-left: 4px;"></i></a>
-                <div class="dropdown-content">
-                    <a href="https://ferwap.com/artists">Featured Artists</a>
-                    <a href="https://ferwap.com/executives">Executives</a>
-                    <a href="https://ferwap.com/contacts">Contacts</a>
-                    <a href="https://metadata.ferwap.com">Admin Portal</a>
-                </div>
-            </div>
-            <a href="https://ferwap.com/news">News</a>
-            <a href="https://ferwap.com/artists">Artists</a>
-            <a href="https://ferwap.com/faq">FAQ</a>
-        </nav>
-    </section>
 
-
-            <!-- Tabel 1: Creator & Artist Identifiers (IPI / ISNI) -->
+            <!-- Tabel 1: Artist Identifiers -->
             <div class="metadata-section" style="margin-bottom: 40px;">
                 <h3 style="color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem;">
-                    <i class="fa-solid fa-users" style="margin-right: 8px;"></i> Artist Identifiers 
+                    <i class="fa-solid fa-users" style="margin-right: 8px;"></i>Artist Identifiers
                 </h3>
                 <div class="table-responsive">
                     <table>
                         <thead>
                             <tr>
                                 <th>Legal Name</th>
-                                <th>Stage Name</th>
+                                <th>Stage</th>
                                 <th>Role</th>
                                 <th>IPI</th>
                                 <th>ISNI</th>
@@ -84,14 +84,14 @@
                             <tr>
                                 <td>Abednego Totouw</td>
                                 <td>3H3D</td>
-                                <td><span style="background: #1f293d; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; color: #93c5fd;">Singer / Songwriter</span></td>
+                                <td><span style="background: #1f293d; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; color: #93c5fd;">Singer / Songwriter / Producer</span></td>
                                 <td>01369068221</td>
                                 <td>0000 0005 3894 9572</td>
                             </tr>
                             <tr>
                                 <td>Efer Totouw</td>
                                 <td>Ferrson</td>
-                                <td><span style="background: #1f293d; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; color: #93c5fd;">Singer / Songwrtiter</span></td>
+                                <td><span style="background: #1f293d; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; color: #93c5fd;">Artist / Vocalist</span></td>
                                 <td>-</td>
                                 <td>-</td>
                             </tr>
@@ -128,16 +128,16 @@
                 </div>
             </div>
 
-            <!-- Tabel 2: Release Catalog & Master Codes (ISRC / UPC) -->
+            <!-- Tabel 2: Release Catalog -->
             <div class="metadata-section">
                 <h3 style="color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem;">
-                    <i class="fa-solid fa-compact-disc" style="margin-right: 8px;"></i> Release Catalog & Master Codes (ISRC / UPC)
+                    <i class="fa-solid fa-compact-disc" style="margin-right: 8px;"></i> Release Catalog
                 </h3>
                 <div class="table-responsive">
                     <table>
                         <thead>
                             <tr>
-                                <th>Title</th>
+                                <th>Track</th>
                                 <th>Artist</th>
                                 <th>ISRC</th>
                                 <th>UPC</th>
@@ -186,9 +186,9 @@
     <footer style="margin-top: 60px; padding: 25px 0; border-top: 1px solid #1f293d; text-align: center; color: #6b7280; font-size: 0.85rem;">
         <p style="margin: 0 0 10px 0;">&copy; 2026 Ferwap Music Entertainment. All rights reserved.</p>
         <div>
-            <a href="https://ferwap.com/privacy" style="color: #9ca3af; text-decoration: none; margin: 0 10px;">Privacy Policy</a> |   
-            <a href="https://ferwap.com/terms" style="color: #9ca3af; text-decoration: none; margin: 0 10px;">Terms of Service</a> |
-            <a href="https://ferwap.com/copyright" style="color: #9ca3af; text-decoration: none; margin: 0 10px;">copyright</a> 
+            <a href="https://ferwap.com/privacy" style="color: #9ca3af; text-decoration: none; margin: 0 10px;">Privacy Policy</a> | 
+            <a href="https://ferwap.com/terms" style="color: #9ca3af; text-decoration: none; margin: 0 10px;">Terms of Service</a> | 
+            <a href="https://ferwap.com/contacts" style="color: #9ca3af; text-decoration: none; margin: 0 10px;">Contact Support</a>
         </div>
     </footer>
 
