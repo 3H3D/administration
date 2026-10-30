@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ferwap Admin Portal - Metadata Management</title>
+    <title>Ferwap Music Administration Portal</title>
     <!-- FontAwesome untuk ikon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Menghubungkan ke file CSS terpisah -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <!-- Hero Main Section & Navigasi -->
+
+    <!-- Header Navigasi Atas (Sesuai web utama ferwap.com) -->
     <section class="hero-container">
         <nav class="main-nav">
             <div class="brand-group-left">
@@ -45,49 +45,138 @@
             <p>Please enter your password to access internal label metadata.</p>
             <form onsubmit="handleLogin(event)">
                 <input type="password" id="adminPass" placeholder="Password" required>
-                <button type="submit">Log In to Portal</button>
+                <button type="submit">Log In</button>
             </form>
         </div>
 
-        <!-- Tabel Database Metadata -->
-        <div class="metadata-section" id="metadataDashboard" style="display: none;">
-            <h2>
-                <span><i class="fa-solid fa-database" style="margin-right: 10px;"></i> Internal Catalog </span>
-            </h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Artist</th>
-                        <th>Release Title</th>
-                        <th>ISRC / UPC</th>
-                        <th>ISNI / IPI</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Ander</td>
-                        <td>Sogdai Ya</td>
-                        <td>ID-XXX-26-00001</td>
-                        <td>0000 000X XXXX</td>
-                        <td><a href="#" style="color: #60a5fa; text-decoration: none;">Edit</a></td>
-                    </tr>
-                    <tr>
-                        <td>Ander</td>
-                        <td>Kwiregtori</td>
-                        <td>ID-XXX-26-00002</td>
-                        <td>0000 000X XXXX</td>
-                        <td><a href="#" style="color: #60a5fa; text-decoration: none;">Edit</a></td>
-                    </tr>
-                    <tr>
-                        <td>Ander</td>
-                        <td>TORU RE</td>
-                        <td>ID-XXX-26-00003</td>
-                        <td>0000 000X XXXX</td>
-                        <td><a href="#" style="color: #60a5fa; text-decoration: none;">Edit</a></td>
-                    </tr>
-                </tbody>
-            </table>
+        <!-- Dashboard Metadata (Akan muncul setelah login berhasil) -->
+        <div id="metadataDashboard" style="display: none;">
+            
+            <!-- Header Dashboard & Tombol Logout -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid #1f293d; padding-bottom: 15px; flex-wrap: wrap; gap: 15px;">
+                <div>
+                    <h1 style="margin: 0; font-size: 1.5rem; color: #fff;">Ferwap Music Administration Portal</h1>
+                    <p style="margin: 5px 0 0 0; color: #9ca3af; font-size: 0.85rem;">Internal Metadata, IPI, ISNI, and Catalog Management System</p>
+                </div>
+                <button onclick="handleLogout()" style="background-color: #ef4444; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; cursor: pointer; font-weight: bold;">
+                    <i class="fa-solid fa-right-from-bracket" style="margin-right: 5px;"></i> Log Out
+                </button>
+            </div>
+
+            <!-- Tabel 1: Creator & Artist Identifiers (IPI / ISNI) -->
+            <div class="metadata-section" style="margin-bottom: 40px;">
+                <h3 style="color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem;">
+                    <i class="fa-solid fa-users" style="margin-right: 8px;"></i> Creator & Artist Identifiers (IPI / ISNI)
+                </h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Legal Name / Credit</th>
+                                <th>Stage Name</th>
+                                <th>Role</th>
+                                <th>IPI Number</th>
+                                <th>ISNI Number</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Abednego Totouw</td>
+                                <td>3H3D</td>
+                                <td><span style="background: #1f293d; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; color: #93c5fd;">Singer / Songwriter / Producer</span></td>
+                                <td>01369068221</td>
+                                <td>0000 0005 3894 9572</td>
+                            </tr>
+                            <tr>
+                                <td>Efer Totouw</td>
+                                <td>Ferrson</td>
+                                <td><span style="background: #1f293d; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; color: #93c5fd;">Artist / Vocalist</span></td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Sander Kosuko</td>
+                                <td>ANDER</td>
+                                <td><span style="background: #1f293d; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; color: #93c5fd;">Singer / Songwriter</span></td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Wali Kosuko</td>
+                                <td>Brecko</td>
+                                <td><span style="background: #1f293d; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; color: #93c5fd;">Singer / Songwriter</span></td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Wempi Kano</td>
+                                <td>Ompi</td>
+                                <td><span style="background: #1f293d; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; color: #93c5fd;">Singer / Songwriter</span></td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Melki Kano</td>
+                                <td>Melchior</td>
+                                <td><span style="background: #1f293d; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; color: #93c5fd;">Singer / Songwriter</span></td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tabel 2: Release Catalog (ISRC / UPC) -->
+            <div class="metadata-section">
+                <h3 style="color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem;">
+                    <i class="fa-solid fa-compact-disc" style="margin-right: 8px;"></i> Release Catalog (ISRC / UPC)
+                </h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Artist</th>
+                                <th>ISRC Code (Track)</th>
+                                <th>UPC Code (Release)</th>
+                                <th>Copyright Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sogdai Ya</td>
+                                <td>3H3D, Brecko & ANDER</td>
+                                <td><span style="color: #93c5fd; font-family: monospace;">GXFHP2681603</span></td>
+                                <td><span style="color: #93c5fd; font-family: monospace;">5064042035692</span></td>
+                                <td>Ferwap Music Ent.</td>
+                            </tr>
+                            <tr>
+                                <td>Kwiregtori</td>
+                                <td>3H3D, Ompi, ANDER & Melchior</td>
+                                <td><span style="color: #93c5fd; font-family: monospace;">GXFHP2625957</span></td>
+                                <td><span style="color: #93c5fd; font-family: monospace;">5064042140358</span></td>
+                                <td>Ferwap Music Ent.</td>
+                            </tr>
+                            <tr>
+                                <td>TORU RE</td>
+                                <td>3H3D, Ompi & ANDER</td>
+                                <td><span style="color: #93c5fd; font-family: monospace;">GXF972668673</span></td>
+                                <td><span style="color: #93c5fd; font-family: monospace;">50640301086983</span></td>
+                                <td>Ferwap Music Ent.</td>
+                            </tr>
+                            <tr>
+                                <td>Og Wesa</td>
+                                <td>3H3D</td>
+                                <td><span style="color: #93c5fd; font-family: monospace;">GXF972661097</span></td>
+                                <td><span style="color: #93c5fd; font-family: monospace;">5064030218168</span></td>
+                                <td>Ferwap Music Ent.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
 
     </div>
