@@ -1,46 +1,53 @@
+/* Reset Basic & Font */
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
     background-color: #0b0f19;
     color: #ffffff;
-    font-family: Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* Top Header Bar */
+/* 1. Top Header Bar */
 .top-header {
     width: 100%;
-    background-color: #000;
-    padding: 8px 20px;
-    box-sizing: border-box;
+    background-color: #000000;
+    padding: 10px 30px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     border-bottom: 1px solid #1f293d;
 }
+
 .brand-top-right .sony-logo {
-    color: #fff;
-    font-weight: bold;
+    color: #ffffff;
+    font-weight: 800;
     letter-spacing: 2px;
     font-size: 0.85rem;
     text-transform: uppercase;
 }
 
-/* Hero Main Section & Navigasi */
+/* 2. Hero Navigasi Utama */
 .hero-container {
     width: 100%;
-    background-color: #000;
+    background-color: #000000;
 }
+
 .main-nav {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 40px;
+    gap: 35px;
     padding: 15px 40px;
-    background-color: #000;
+    background-color: #000000;
     border-bottom: 1px solid #1f293d;
-    box-sizing: border-box;
     flex-wrap: wrap;
 }
+
+/* Branding Logo & Teks Kiri */
 .brand-group-left a {
     display: flex;
     flex-direction: column;
@@ -48,16 +55,35 @@ body {
     text-decoration: none;
 }
 
-/* Menu Navigasi & Tautan */
-.main-nav > a, .dropdown {
+.brand-group-left img {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ff0000;
+}
+
+.sub-brand-text {
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-top: 6px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+/* Tautan Navigasi Top Level */
+.main-nav > a, 
+.dropdown .drop-btn {
     font-size: 0.95rem;
-}
-.main-nav > a {
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
-    transition: color 0.2s;
+    font-weight: 600;
+    transition: color 0.2s ease;
 }
-.main-nav > a:hover {
+
+.main-nav > a:hover, 
+.dropdown .drop-btn:hover {
     color: #9ca3af;
 }
 
@@ -66,137 +92,95 @@ body {
     position: relative;
     display: inline-block;
 }
-.drop-btn {
-    color: #fff;
-    text-decoration: none;
-    cursor: pointer;
-}
+
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #111827;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.4);
+    min-width: 180px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.6);
     z-index: 1000;
-    border-radius: 6px;
+    border-radius: 8px;
     border: 1px solid #1f293d;
     top: 100%;
     left: 0;
-    margin-top: 8px;
+    margin-top: 10px;
+    padding: 6px 0;
 }
+
 .dropdown-content a {
-    color: #fff;
-    padding: 10px 16px;
+    color: #e5e7eb;
+    padding: 10px 18px;
     text-decoration: none;
     display: block;
     font-size: 0.9rem;
-    transition: background 0.2s;
+    transition: background 0.2s ease, color 0.2s ease;
 }
+
 .dropdown-content a:hover {
     background-color: #1f293d;
+    color: #ffffff;
 }
+
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
-/* Container Utama Konten */
+/* Highlight khusus Admin Portal di Dropdown */
+.dropdown-content a[href*="metadata"] {
+    color: #f87171;
+    font-weight: bold;
+    border-top: 1px solid #1f293d;
+}
+
+/* 3. Container & Layout Dashboard */
 .admin-container {
     max-width: 1100px;
-    margin: 40px auto;
+    margin: 50px auto;
     padding: 0 20px;
 }
 
-/* Kotak Login Admin */
+/* 4. Form Login Card */
 .login-card {
     background-color: #111827;
     padding: 40px;
     border-radius: 12px;
     border: 1px solid #1f293d;
-    max-width: 400px;
-    margin: 60px auto;
+    max-width: 420px;
+    margin: 40px auto;
     text-align: center;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
+
 .login-card h2 {
+    margin-top: 0;
     margin-bottom: 10px;
-    font-size: 1.5rem;
-    color: #fff;
+    font-size: 1.6rem;
+    color: #ffffff;
+    font-weight: 700;
 }
+
 .login-card p {
     color: #9ca3af;
     font-size: 0.9rem;
     margin-bottom: 25px;
+    line-height: 1.4;
 }
-.login-card input {
+
+/* Memastikan Input & Button Tampil Modern */
+.login-card input[type="password"],
+.login-card input[type="text"] {
     width: 100%;
-    padding: 12px;
+    padding: 12px 16px;
     margin-bottom: 20px;
     background-color: #1f293d;
     border: 1px solid #374151;
-    border-radius: 6px;
-    color: #fff;
-    box-sizing: border-box;
-}
-.login-card button {
-    width: 100%;
-    padding: 12px;
-    background-color: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-.login-card button:hover {
-    background-color: #1d4ed8;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease;
 }
 
-/* Bagian Tabel Metadata */
-.metadata-section {
-    background-color: #111827;
-    padding: 30px;
-    border-radius: 12px;
-    border: 1px solid #1f293d;
-    margin-top: 20px;
-}
-.metadata-section h2 {
-    margin-top: 0;
-    font-size: 1.4rem;
-    border-bottom: 1px solid #1f293d;
-    padding-bottom: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.btn-add {
-    background-color: #10b981;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    cursor: pointer;
-    font-weight: bold;
-}
-.btn-add:hover {
-    background-color: #059669;
-}
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-th, td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #1f293d;
-    font-size: 0.9rem;
-}
-th {
-    background-color: #1f293d;
-    color: #93c5fd;
-}
-td {
-    color: #d1d5db;
-}
+.login-card input[type="password"]:focus,
+.login-card input[typeSecara keseluruhan, struktur **CSS ini sudah sangat rapi, modular, dan terorganisir dengan baik**. Penggunaan variabel warna gelap (*dark mode*) seperti `#0b0f19` dan `#111827` membuat tampilannya terlihat elegan dan modern layaknya portal internal label profesional.Namun, agar tampilannya **100% sempurna, responsif di HP/Mobile**, dan tidak ada efek tak terduga (*layout bug*), ada **3 penyesuaian penting** yang perlu ditambahkan:---### 1. Masalah Responsif di Layar HP (Mobile)Tabel HTML standard (`<table>`) tidak bisa mengecil secara otomatis di layar smartphone. Jika dibuka dari HP, tabel metadata akan terpotong ke samping.* **Solusi:** Bungkus tabel dengan kontainer yang memiliki properti `overflow-x: auto;`.### 2. Efek Halus pada Dropdown & TombolOpsi dropdown dan tombol input saat ini berganti warna secara instan. Menambahkan `transition` akan membuat animasi saat *hover* (kursor diarahkan) terasa lebih halus.### 3. Penataan Kotak Login di Tengah LayarAgar kotak login selalu berada pas di tengah-tengah layar (secara vertikal dan horizontal) sebelum user masuk, kita bisa memanfaatkan *Flexbox* pada `.login-wrapper`.---### Kode CSS yang Sudah Disempurnakan:Berikut adalah versi perbaikan yang sudah disempurnakan. Kamu bisa langsung mengganti isi file `style.css` kamu dengan kode di bawah ini:```css/* Reset Dasar & Global Styles */* {    box-sizing: border-box;}body {    margin: 0;    padding: 0;    background-color: #0b0f19;    color: #ffffff;    font-family: Arial, Helvetica, sans-serif;    line-height: 1.5;}/* Top Header Bar */.top-header {    width: 100%;    background-color: #000000;    padding: 8px 24px;    display: flex;    justify-content: flex-end;    align-items: center;    border-bottom: 1px solid #1f293d;}.brand-top-right .sony-logo {    color: #ffffff;    font-weight: bold;    letter-spacing: 2px;    font-size: 0.85rem;    text-transform: uppercase;}/* Hero Main Section & Navigasi */.hero-container {    width: 100%;    background-color: #000000;}.main-nav {    display: flex;    align-items: center;    justify-content: flex-start;    gap: 30px;    padding: 15px 40px;    background-color: #000000;    border-bottom: 1px solid #1f293d;    flex-wrap: wrap;}.brand-group-left a {    display: flex;    flex-direction: column;    align-items: center;    text-decoration: none;}/* Menu Navigasi & Tautan */.main-nav > a, .dropdown {    font-size: 0.95rem;}.main-nav > a {    color: #ffffff;    text-decoration: none;    transition: color 0.2s ease;}.main-nav > a:hover {    color: #9ca3af;}/* Dropdown Menu Styles */.dropdown {    position: relative;    display: inline-block;}.drop-btn {    color: #ffffff;    text-decoration: none;    cursor: pointer;    display: flex;    align-items: center;    gap: 6px;}.dropdown-content {    display: none;    position: absolute;    background-color: #111827;    min-width: 180px;    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.6);    z-index: 1000;    border-radius: 8px;    border: 1px solid #1f293d;    top: 100%;    left: 0;    margin-top: 10px;    overflow: hidden;}.dropdown-content a {    color: #ffffff;    padding: 12px 16px;    text-decoration: none;    display: block;    font-size: 0.9rem;    transition: background-color 0.2s ease;}.dropdown-content a:hover {    background-color: #1f293d;}.dropdown:hover .dropdown-content {    display: block;}/* Container Utama Konten */.admin-container {    max-width: 1100px;    margin: 40px auto;    padding: 0 20px;}/* Kotak Login Admin */.login-wrapper {    display: flex;    justify-content: center;    align-items: center;    min-height: 60vh;}.login-card {    background-color: #111827;    padding: 40px;    border-radius: 12px;    border: 1px solid #1f293d;    width: 100%;    max-width: 400px;    text-align: center;    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);}.login-card h2 {    margin-top: 0;    margin-bottom: 10px;    font-size: 1.5rem;    color: #ffffff;}.login-card p {    color: #9ca3af;    font-size: 0.9rem;    margin-bottom: 25px;}.login-card input {    width: 100%;    padding: 12px 14px;    margin-bottom: 20px;    background-color: #1f293d;    border: 1px solid #374151;    border-radius: 6px;    color: #ffffff;    outline: none;    transition: border-color 0.2s ease;}.login-card input:focus {    border-color: #2563eb;}.login-card button {    width: 100%;    padding: 12px;    background-color: #2563eb;    color: #ffffff;    border: none;    border-radius: 6px;    font-weight: bold;    cursor: pointer;    transition: background-color 0.2s ease;}.login-card button:hover {    background-color: #1d4ed8;}/* Bagian Tabel Metadata */.metadata-section {    background-color: #111827;    padding: 30px;    border-radius: 12px;    border: 1px solid #1f293d;    margin-top: 20px;}.metadata-section h2 {    margin-top: 0;    font-size: 1.3rem;    border-bottom: 1px solid #1f293d;    padding-bottom: 15px;    display: flex;    justify-content: space-between;    align-items: center;    flex-wrap: wrap;    gap: 15px;}.btn-add {    background-color: #10b981;    color: #ffffff;    border: none;    padding: 8px 16px;    border-radius: 6px;    font-size: 0.85rem;    cursor: pointer;    font-weight: bold;    transition: background-color 0.2s ease;}.btn-add:hover {    background-color: #059669;}/* Responsif Tabel Metadata */.table-responsive {    width: 100%;    overflow-x: auto;}table {    width: 100%;    border-collapse: collapse;    margin-top: 15px;}th, td {    padding: 12px 15px;    text-align: left;    border-bottom: 1px solid #1f293d;    font-size: 0.9rem;    white-space: nowrap;}th {    background-color: #1f293d;    color: #93c5fd;    font-weight: 600;}td {    color: #d1d5db;}tr:hover td {    background-color: rgba(31, 41, 61, 0.4);}
