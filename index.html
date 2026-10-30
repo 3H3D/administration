@@ -1,54 +1,54 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ferwap Music - Administration Portal</title>
-    <!-- Memanggil CSS Terpisah -->
+    <!-- External CSS stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="container">
-        <!-- FORM LOGIN -->
+        <!-- LOGIN FORM SECTION -->
         <section id="login-section" class="login-wrapper">
             <div class="login-card">
                 <h2>Ferwap Admin Portal</h2>
-                <p>Masukkan kata sandi untuk mengakses metadata internal label.</p>
+                <p>Please enter your password to access internal label metadata.</p>
                 
                 <form id="login-form">
                     <div class="input-group">
-                        <label for="password-input">Password Administrasi</label>
+                        <label for="password-input">Administrative Password</label>
                         <input type="password" id="password-input" placeholder="••••••••" required>
                     </div>
-                    <button type="submit" class="btn-login">Masuk ke Portal</button>
-                    <p id="error-msg" class="error-message">Password salah! Silakan coba lagi.</p>
+                    <button type="submit" class="btn-login">Log In to Portal</button>
+                    <p id="error-msg" class="error-message">Incorrect password! Please try again.</p>
                 </form>
             </div>
         </section>
 
-        <!-- DASHBOARD ADMIN (TERSEMBUNYI SEBELUM LOGIN) -->
+        <!-- ADMIN DASHBOARD SECTION (HIDDEN BEFORE LOGIN) -->
         <section id="dashboard-section" class="hidden">
             <header>
                 <div>
                     <h1>Ferwap Music Administration Portal</h1>
                     <p>Internal Metadata, IPI, ISNI, and Catalog Management System</p>
                 </div>
-                <button id="logout-btn" class="btn-logout">Keluar (Logout)</button>
+                <button id="logout-btn" class="btn-logout">Log Out</button>
             </header>
 
-            <!-- TABEL 1: IDENTITAS CREATOR (IPI / ISNI) -->
+            <!-- TABLE 1: CREATOR & ARTIST IDENTIFIERS (IPI / ISNI) -->
             <div class="section-card">
-                <h2>Data Identitas Pencipta & Artis (IPI / ISNI)</h2>
+                <h2>Creator & Artist Identifiers (IPI / ISNI)</h2>
                 <div class="table-responsive">
                     <table>
                         <thead>
                             <tr>
-                                <th>Nama Asli / Kredit</th>
-                                <th>Nama Panggung</th>
-                                <th>Peran / Role</th>
-                                <th>Nomor IPI</th>
-                                <th>Nomor ISNI</th>
+                                <th>Legal Name / Credit</th>
+                                <th>Stage Name</th>
+                                <th>Role</th>
+                                <th>IPI Number</th>
+                                <th>ISNI Number</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -78,18 +78,18 @@
                 </div>
             </div>
 
-            <!-- TABEL 2: KATALOG RILISAN (ISRC / UPC) -->
+            <!-- TABLE 2: CATALOG RELEASES (ISRC / UPC) -->
             <div class="section-card">
-                <h2>Katalog Rilisan & Code Master (ISRC / UPC)</h2>
+                <h2>Release Catalog & Master Codes (ISRC / UPC)</h2>
                 <div class="table-responsive">
                     <table>
                         <thead>
                             <tr>
-                                <th>Judul Lagu</th>
-                                <th>Artis / Kolaborator</th>
-                                <th>Kode ISRC (Trek)</th>
-                                <th>Kode UPC (Release)</th>
-                                <th>Status Hak Cipta</th>
+                                <th>Track Title</th>
+                                <th>Artist / Collaborator</th>
+                                <th>ISRC Code (Track)</th>
+                                <th>UPC Code (Release)</th>
+                                <th>Copyright Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -121,7 +121,7 @@
         </section>
     </div>
 
-    <!-- Memanggil JavaScript Terpisah -->
+    <!-- External JavaScript file -->
     <script src="script.js"></script>
 </body>
 </html>
