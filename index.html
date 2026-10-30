@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferwap Music - Administration Portal</title>
+    <!-- Memanggil CSS Terpisah -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- FORM LOGIN -->
+        <section id="login-section" class="login-wrapper">
+            <div class="login-card">
+                <h2>Ferwap Admin Portal</h2>
+                <p>Masukkan kata sandi untuk mengakses metadata internal label.</p>
+                
+                <form id="login-form">
+                    <div class="input-group">
+                        <label for="password-input">Password Administrasi</label>
+                        <input type="password" id="password-input" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn-login">Masuk ke Portal</button>
+                    <p id="error-msg" class="error-message">Password salah! Silakan coba lagi.</p>
+                </form>
+            </div>
+        </section>
+
+        <!-- DASHBOARD ADMIN (TERSEMBUNYI SEBELUM LOGIN) -->
+        <section id="dashboard-section" class="hidden">
+            <header>
+                <div>
+                    <h1>Ferwap Music Administration Portal</h1>
+                    <p>Internal Metadata, IPI, ISNI, and Catalog Management System</p>
+                </div>
+                <button id="logout-btn" class="btn-logout">Keluar (Logout)</button>
+            </header>
+
+            <!-- TABEL 1: IDENTITAS CREATOR (IPI / ISNI) -->
+            <div class="section-card">
+                <h2>Data Identitas Pencipta & Artis (IPI / ISNI)</h2>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nama Asli / Kredit</th>
+                                <th>Nama Panggung</th>
+                                <th>Peran / Role</th>
+                                <th>Nomor IPI</th>
+                                <th>Nomor ISNI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Abed N. Totouw</td>
+                                <td>3H3D</td>
+                                <td><span class="badge-role">Singer / Songwriter / Producer</span></td>
+                                <td><span class="code-badge">ISI-XXX-XXXX</span></td>
+                                <td><span class="code-badge">0000 0000 0000 0000</span></td>
+                            </tr>
+                            <tr>
+                                <td>Efer Totouw</td>
+                                <td>Ferrson</td>
+                                <td><span class="badge-role">Artist / Vocalist</span></td>
+                                <td><span class="code-badge">ISI-XXX-XXXX</span></td>
+                                <td><span class="code-badge">0000 0000 0000 0000</span></td>
+                            </tr>
+                            <tr>
+                                <td>-</td>
+                                <td>ANDER</td>
+                                <td><span class="badge-role">Singer / Songwriter</span></td>
+                                <td><span class="code-badge">ISI-XXX-XXXX</span></td>
+                                <td><span class="code-badge">0000 0000 0000 0000</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TABEL 2: KATALOG RILISAN (ISRC / UPC) -->
+            <div class="section-card">
+                <h2>Katalog Rilisan & Code Master (ISRC / UPC)</h2>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Judul Lagu</th>
+                                <th>Artis / Kolaborator</th>
+                                <th>Kode ISRC (Trek)</th>
+                                <th>Kode UPC (Release)</th>
+                                <th>Status Hak Cipta</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sogdai Ya</td>
+                                <td>3H3D, ANDER</td>
+                                <td><span class="code-badge">ID-XXX-26-00001</span></td>
+                                <td><span class="code-badge">198000000001</span></td>
+                                <td>Ferwap Music Ent.</td>
+                            </tr>
+                            <tr>
+                                <td>Kwiregtori</td>
+                                <td>3H3D, ANDER</td>
+                                <td><span class="code-badge">ID-XXX-26-00002</span></td>
+                                <td><span class="code-badge">198000000002</span></td>
+                                <td>Ferwap Music Ent.</td>
+                            </tr>
+                            <tr>
+                                <td>TORU RE</td>
+                                <td>3H3D, ANDER</td>
+                                <td><span class="code-badge">ID-XXX-26-00003</span></td>
+                                <td><span class="code-badge">198000000003</span></td>
+                                <td>Ferwap Music Ent.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Memanggil JavaScript Terpisah -->
+    <script src="script.js"></script>
+</body>
+</html>
