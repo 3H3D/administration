@@ -1,5 +1,5 @@
 // ATUR PASSWORD ADMIN KAMU DI SINI
-const ADMIN_PASSWORD = "PasswordFerwap2026!"; 
+const ADMIN_PASSWORD = "7070Uw#007"; 
 
 document.addEventListener("DOMContentLoaded", () => {
     const loginSection = document.getElementById("login-section");
