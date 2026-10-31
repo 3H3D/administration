@@ -1,5 +1,5 @@
-// Ganti kata sandi di bawah ini sesuai kata sandi admin yang kamu gunakan
-const ADMIN_PASSWORD = "7070Uw#007"; 
+// Kata sandi portal admin
+const ADMIN_PASSWORD = "PasswordAnda123"; 
 
 // Fungsi untuk menangani Login
 function handleLogin(event) {
@@ -7,7 +7,6 @@ function handleLogin(event) {
     const inputPass = document.getElementById('adminPass').value;
 
     if (inputPass === ADMIN_PASSWORD) {
-        // Simpan status login di sesi browser
         sessionStorage.setItem('ferwap_admin_logged_in', 'true');
         showDashboard();
     } else {
@@ -24,13 +23,13 @@ function handleLogout() {
     document.getElementById('adminPass').value = '';
 }
 
-// Menampilkan Dashboard setelah login
+// Menampilkan Dashboard setelah login berhasil
 function showDashboard() {
     document.getElementById('loginCard').style.display = 'none';
     document.getElementById('metadataDashboard').style.display = 'block';
 }
 
-// Memeriksa status login saat halaman dimuat (Persistence Session)
+// Memeriksa status login saat halaman dimuat
 window.addEventListener('DOMContentLoaded', () => {
     const isLoggedIn = sessionStorage.getItem('ferwap_admin_logged_in');
     if (isLoggedIn === 'true') {
