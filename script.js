@@ -1,38 +1,39 @@
-// Tentukan password rahasia untuk admin portal (silakan ubah sesuai keinginanmu)
-const ADMIN_PASSWORD = "ferwap2026"; 
+// Ganti kata sandi di bawah ini sesuai kata sandi admin yang kamu gunakan
+const ADMIN_PASSWORD = "7070Uw#007"; 
 
-// Cek apakah admin sudah pernah login sebelumnya di browser ini
-window.onload = function() {
-    if (sessionStorage.getItem("isLoggedIn") === "true") {
-        showDashboard();
-    }
-};
-
-// Fungsi Proses Login
+// Fungsi untuk menangani Login
 function handleLogin(event) {
     event.preventDefault();
     const inputPass = document.getElementById('adminPass').value;
-    
+
     if (inputPass === ADMIN_PASSWORD) {
-        // Simpan status login ke sesi browser
-        sessionStorage.setItem("isLoggedIn", "true");
+        // Simpan status login di sesi browser
+        sessionStorage.setItem('ferwap_admin_logged_in', 'true');
         showDashboard();
     } else {
-        alert('Password salah! Silakan masukkan sandi administrator yang benar.');
+        alert("Password salah! Silakan coba lagi.");
         document.getElementById('adminPass').value = '';
     }
 }
 
-// Fungsi Menampilkan Dashboard & Menyembunyikan Login
+// Fungsi untuk menangani Logout
+function handleLogout() {
+    sessionStorage.removeItem('ferwap_admin_logged_in');
+    document.getElementById('loginCard').style.display = 'block';
+    document.getElementById('metadataDashboard').style.display = 'none';
+    document.getElementById('adminPass').value = '';
+}
+
+// Menampilkan Dashboard setelah login
 function showDashboard() {
     document.getElementById('loginCard').style.display = 'none';
     document.getElementById('metadataDashboard').style.display = 'block';
 }
 
-// Fungsi Logout (Keluar dari Portal)
-function handleLogout() {
-    sessionStorage.removeItem("isLoggedIn");
-    document.getElementById('metadataDashboard').style.display = 'none';
-    document.getElementById('loginCard').style.display = 'block';
-    document.getElementById('adminPass').value = '';
-}
+// Memeriksa status login saat halaman dimuat (Persistence Session)
+window.addEventListener('DOMContentLoaded', () => {
+    const isLoggedIn = sessionStorage.getItem('ferwap_admin_logged_in');
+    if (isLoggedIn === 'true') {
+        showDashboard();
+    }
+});
