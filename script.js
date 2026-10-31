@@ -1,5 +1,5 @@
 // Kata sandi portal admin
-const ADMIN_PASSWORD = "PasswordAnda123"; 
+const ADMIN_PASSWORD = "7070Uw#007"; 
 
 // Fungsi untuk menangani Login
 function handleLogin(event) {
