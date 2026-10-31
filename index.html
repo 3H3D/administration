@@ -13,7 +13,7 @@
 
 <div class="page-wrapper">
 
-    <!-- BAGIAN LOGO TERPISAH DI ATAS (Gaya persis Talent Submission / demo.ferwap.com) -->
+    <!-- BAGIAN LOGO TERPISAH DI ATAS (Gaya Clean Centered Logo) -->
     <div class="logo-section" style="text-align: center; padding: 30px 0 10px 0;">
         <a href="https://ferwap.com">
             <img src="https://ferwap.com/Ferwap.jpeg" alt="Ferwap Music Logo" style="height: 90px; width: 90px; border-radius: 50%; object-fit: cover; border: 2px solid #ff0000; display: inline-block;">
@@ -43,27 +43,34 @@
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid #1f293d; padding-bottom: 15px; flex-wrap: wrap; gap: 15px;">
                 <div>
                     <h1 style="margin: 0; font-size: 1.5rem; color: #fff;">Ferwap Music Administration Portal</h1>
-                    <p style="margin: 5px 0 0 0; color: #9ca3af; font-size: 0.85rem;">Internal Metadata, IPI, ISNI, Catalog & Publishing Split System</p>
+                    <p style="margin: 5px 0 0 0; color: #9ca3af; font-size: 0.85rem;">Internal Metadata, IPI, ISNI, Catalog & Global Database System</p>
                 </div>
                 <button onclick="handleLogout()" style="background-color: #ef4444; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; cursor: pointer; font-weight: bold;">
                     <i class="fa-solid fa-right-from-bracket" style="margin-right: 5px;"></i> Log Out
                 </button>
             </div>
 
-            <!-- Tombol Pintas Akses Eksternal Ala Major Label (Agregator & Database) -->
+            <!-- Tombol Pintas Akses Eksternal (RouteNote, MusicBrainz, ISNI, BMI, & Formspree) -->
             <div style="margin-bottom: 30px; background: #111827; padding: 15px; border-radius: 8px; border: 1px solid #1f293d;">
                 <h4 style="margin: 0 0 12px 0; color: #9ca3af; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">
-                    <i class="fa-solid fa-arrow-up-right-from-square" style="margin-right: 6px;"></i> Quick Label Shortcuts
+                    <i class="fa-solid fa-arrow-up-right-from-square" style="margin-right: 6px;"></i> Distributor & Global Shortcuts
                 </h4>
                 <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <!-- Shortcut Langsung ke Agregator RouteNote -->
+                    <a href="https://routenote.com/login" target="_blank" style="background: #ef4444; color: #ffffff; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 0.8rem; font-weight: bold;">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> RouteNote Dashboard
+                    </a>
                     <a href="https://musicbrainz.org" target="_blank" style="background: #1f293d; color: #93c5fd; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 0.8rem; font-weight: bold;">
-                        <i class="fa-solid fa-database"></i> MusicBrainz Database
+                        <i class="fa-solid fa-database"></i> MusicBrainz
                     </a>
                     <a href="https://isni.org" target="_blank" style="background: #1f293d; color: #93c5fd; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 0.8rem; font-weight: bold;">
-                        <i class="fa-solid fa-id-card"></i> ISNI Official Search
+                        <i class="fa-solid fa-id-card"></i> ISNI Search
+                    </a>
+                    <a href="https://repertoire.bmi.com/" target="_blank" style="background: #1f293d; color: #f43f5e; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 0.8rem; font-weight: bold;">
+                        <i class="fa-solid fa-globe"></i> BMI Repertoire
                     </a>
                     <a href="https://formspree.io/forms" target="_blank" style="background: #1f293d; color: #34d399; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 0.8rem; font-weight: bold;">
-                        <i class="fa-solid fa-inbox"></i> Formspree Submissions
+                        <i class="fa-solid fa-inbox"></i> Formspree Inbox
                     </a>
                 </div>
             </div>
@@ -71,7 +78,7 @@
             <!-- Tabel 1: Artist Identifiers & Global Verification -->
             <div class="metadata-section" style="margin-bottom: 40px;">
                 <h3 style="color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem;">
-                    <i class="fa-solid fa-users" style="margin-right: 8px;"></i> Artist Identifiers & Global Databases
+                    <i class="fa-solid fa-users" style="margin-right: 8px;"></i> Artist Identifiers & Global Verification
                 </h3>
                 <div class="table-responsive">
                     <table>
@@ -80,8 +87,8 @@
                                 <th>Legal Name</th>
                                 <th>Stage</th>
                                 <th>Role</th>
-                                <th>IPI</th>
-                                <th>ISNI Search Link</th>
+                                <th>IPI (BMI Search)</th>
+                                <th>ISNI Profile Link</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -89,7 +96,11 @@
                                 <td>Abednego Totouw</td>
                                 <td>3H3D</td>
                                 <td><span style="background: #1f293d; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; color: #93c5fd;">Singer / Songwriter / Producer</span></td>
-                                <td><span style="font-family: monospace; color: #f59e0b;">01369068221</span></td>
+                                <td>
+                                    <a href="https://repertoire.bmi.com/Search/Search?main_entity=CREATOR&search_type=IPI&search_value=01369068221" target="_blank" style="color: #f59e0b; text-decoration: underline; font-family: monospace; font-weight: bold;">
+                                        01369068221 <i class="fa-solid fa-up-right-from-square" style="font-size: 0.7rem;"></i>
+                                    </a>
+                                </td>
                                 <td>
                                     <a href="https://isni.org/isni/0000000538949572" target="_blank" style="color: #60a5fa; text-decoration: underline; font-family: monospace;">
                                         0000 0005 3894 9572 <i class="fa-solid fa-up-right-from-square" style="font-size: 0.7rem;"></i>
@@ -136,10 +147,10 @@
                 </div>
             </div>
 
-            <!-- Tabel 2: Release Catalog & Royalty Splits -->
+            <!-- Tabel 2: Release Catalog & Rights (RouteNote Distribution) -->
             <div class="metadata-section">
                 <h3 style="color: #60a5fa; margin-top: 0; margin-bottom: 20px; font-size: 1.1rem;">
-                    <i class="fa-solid fa-compact-disc" style="margin-right: 8px;"></i> Release Catalog & Royalty Rights
+                    <i class="fa-solid fa-compact-disc" style="margin-right: 8px;"></i> Release Catalog & Master Rights
                 </h3>
                 <div class="table-responsive">
                     <table>
