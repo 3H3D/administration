@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferwap Music Administration Portal</title>
+    <!-- FontAwesome & CryptoJS Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+    <!-- PANEL LOGIN -->
+    <div class="login-card" id="loginCard">
+        <a href="https://ferwap.com">
+            <img src="https://ferwap.com/Ferwap.jpeg" alt="Ferwap Music Logo" class="brand-logo">
+        </a>
+        <h2>Ferwap Admin Portal</h2>
+        <p>AES-256 Encrypted High Security Access</p>
+        
+        <div class="error-msg" id="errorMsg">Kata sandi tidak valid. Akses ditolak.</div>
+
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="input-group">
+                <input type="password" id="passwordInput" placeholder="Masukkan Kata Sandi Rahasia" required autocomplete="off">
+            </div>
+            <button type="submit" class="btn-login">Verifikasi & Enkripsi</button>
+        </form>
+    </div>
+
+    <!-- PANEL METADATA DASHBOARD -->
+    <div id="metadataDashboard">
+        <div class="dashboard-header">
+            <div class="header-brand">
+                <a href="https://ferwap.com">
+                    <img src="https://ferwap.com/Ferwap.jpeg" alt="Ferwap Music Logo" class="brand-logo" style="margin:0;">
+                </a>
+                <div class="header-title">
+                    <span style="color: #ef4444; font-weight: bold; letter-spacing: 1.5px; font-size: 0.75rem; text-transform: uppercase;">FERWAP MUSIC</span>
+                    <h1>Ferwap Music Administration Portal</h1>
+                    <p>Internal Metadata, IPI, ISNI, Catalog & Global Database System</p>
+                </div>
+            </div>
+            <button class="btn-logout" onclick="handleLogout()"><i class="fa-solid fa-right-from-bracket"></i> Log Out</button>
+        </div>
+
+        <div class="shortcuts-box">
+            <div class="shortcuts-title"><i class="fa-solid fa-arrow-up-right-from-square"></i> Distributor & Global Shortcuts</div>
+            <div class="shortcut-links">
+                <a href="https://routenote.com/login" target="_blank" class="shortcut-btn" style="background: #ef4444; color: #ffffff;">RouteNote Dashboard</a>
+                <a href="https://musicbrainz.org" target="_blank" class="shortcut-btn" style="background: #1f293d; color: #93c5fd;">MusicBrainz</a>
+                <a href="https://isni.org" target="_blank" class="shortcut-btn" style="background: #1f293d; color: #93c5fd;">ISNI Search</a>
+                <a href="https://repertoire.bmi.com/" target="_blank" class="shortcut-btn" style="background: #1f293d; color: #f43f5e;">BMI Repertoire</a>
+                <a href="https://formspree.io/forms" target="_blank" class="shortcut-btn" style="background: #1f293d; color: #34d399;">Formspree Inbox</a>
+            </div>
+        </div>
+
+        <!-- Container Tempat Tabel Didekripsi Dinamis -->
+        <div id="decryptedContent"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Ferwap Music Entertainment. All rights reserved.</p>
+    </footer>
+</div>
+
+<!-- Memuat Skrip JavaScript Terpisah -->
+<script src="app.js"></script>
+</body>
+</html>
