@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ferwap Music Administration Portal</title>
-    <!-- FontAwesome & CryptoJS Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,18 +18,18 @@
         <h2>Ferwap Admin Portal</h2>
         <p>AES-256 Encrypted High Security Access</p>
         
-        <div class="error-msg" id="errorMsg">Kata sandi tidak valid. Akses ditolak.</div>
+        <div class="error-msg" id="errorMsg" style="display:none;">Kata sandi salah! Coba lagi (`ferwap2026`).</div>
 
-        <form id="loginForm" onsubmit="handleLogin(event)">
+        <form id="loginForm" onsubmit="cekLogin(event)">
             <div class="input-group">
                 <input type="password" id="passwordInput" placeholder="Masukkan Kata Sandi Rahasia" required autocomplete="off">
             </div>
-            <button type="submit" class="btn-login">Verifikasi & Enkripsi</button>
+            <button type="submit" class="btn-login">Verifikasi & Masuk</button>
         </form>
     </div>
 
-    <!-- PANEL METADATA DASHBOARD -->
-    <div id="metadataDashboard">
+    <!-- PANEL DASHBOARD (Awalnya Disembunyikan) -->
+    <div id="metadataDashboard" style="display: none;">
         <div class="dashboard-header">
             <div class="header-brand">
                 <a href="https://ferwap.com">
@@ -43,7 +41,7 @@
                     <p>Internal Metadata, IPI, ISNI, Catalog & Global Database System</p>
                 </div>
             </div>
-            <button class="btn-logout" onclick="handleLogout()"><i class="fa-solid fa-right-from-bracket"></i> Log Out</button>
+            <button class="btn-logout" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Log Out</button>
         </div>
 
         <div class="shortcuts-box">
@@ -57,8 +55,79 @@
             </div>
         </div>
 
-        <!-- Container Tempat Tabel Didekripsi Dinamis -->
-        <div id="decryptedContent"></div>
+        <!-- Tabel Data -->
+        <div class="metadata-section">
+            <div class="section-title"><i class="fa-solid fa-users"></i> Artist Identifiers & Global Verification</div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Legal Name</th>
+                            <th>Stage</th>
+                            <th>Role</th>
+                            <th>IPI (BMI Search)</th>
+                            <th>ISNI Profile Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Abednego Totouw</td>
+                            <td><strong>3H3D</strong></td>
+                            <td><span class="badge">Singer / Songwriter / Producer</span></td>
+                            <td><a href="https://repertoire.bmi.com/Search/Search?main_entity=CREATOR&search_type=IPI&search_value=01369068221" target="_blank" class="code-link">01369068221</a></td>
+                            <td><a href="https://isni.org/isni/0000000538949572" target="_blank" style="color: #60a5fa; text-decoration: underline; font-family: monospace;">0000 0005 3894 9572</a></td>
+                        </tr>
+                        <tr>
+                            <td>Efer Totouw</td>
+                            <td><strong>Ferrson</strong></td>
+                            <td><span class="badge">Artist / Vocalist</span></td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Sander Kosuko</td>
+                            <td><strong>ANDER</strong></td>
+                            <td><span class="badge">Singer / Songwriter</span></td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="metadata-section">
+            <div class="section-title"><i class="fa-solid fa-compact-disc"></i> Release Catalog & Master Rights</div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Track Title</th>
+                            <th>Artist</th>
+                            <th>ISRC</th>
+                            <th>UPC</th>
+                            <th>Master Owner</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Sogdai Ya</strong></td>
+                            <td>3H3D, Brecko & ANDER</td>
+                            <td><span class="mono">GXFHP2681603</span></td>
+                            <td><span class="mono">5064042035692</span></td>
+                            <td>Ferwap Music Ent.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kwiregtori</strong></td>
+                            <td>3H3D, Ompi, ANDER & Melchior</td>
+                            <td><span class="mono">GXFHP2625957</span></td>
+                            <td><span class="mono">5064042140358</span></td>
+                            <td>Ferwap Music Ent.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
     <footer>
@@ -66,7 +135,6 @@
     </footer>
 </div>
 
-<!-- Memuat Skrip JavaScript Terpisah -->
 <script src="app.js"></script>
 </body>
 </html>
