@@ -3,138 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ferwap Music Administration Portal</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <title>Ferwap Admin Portal</title>
+    <!-- Memuat Supabase Client dari CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body { font-family: sans-serif; background: #111; color: #eee; padding: 20px; max-width: 600px; margin: auto; }
+        .card { background: #222; padding: 20px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #333; }
+        input, textarea { width: 100%; padding: 10px; margin: 8px 0 15px 0; background: #333; border: 1px solid #444; color: #fff; border-radius: 4px; box-sizing: border-box; }
+        button { background: #e50914; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; font-weight: bold; }
+        button:hover { background: #b20710; }
+        .hidden { display: none; }
+    </style>
 </head>
 <body>
 
-<div class="page-wrapper">
-    <!-- PANEL LOGIN -->
-    <div class="login-card" id="loginCard">
-        <a href="https://ferwap.com">
-            <img src="https://ferwap.com/Ferwap.jpeg" alt="Ferwap Music Logo" class="brand-logo">
-        </a>
-        <h2>Ferwap Admin Portal</h2>
-        <p>AES-256 Encrypted High Security Access</p>
+    <h2>Ferwap Admin Portal</h2>
+
+    <!-- BAGIAN 1: FORM LOGIN -->
+    <div id="login-section" class="card">
+        <h3>Login Admin</h3>
+        <input type="email" id="email" placeholder="Email Admin">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="loginAdmin()">Login</button>
+        <p id="login-status" style="color: #ff5555;"></p>
+    </div>
+
+    <!-- BAGIAN 2: PANEL UTAMA EDIT KONTEN (Muncul Setelah Login) -->
+    <div id="admin-panel" class="card hidden">
+        <h3>Kelola Teks Web Utama</h3>
+        <p>Ubah konten teks situs ferwap.com secara instan.</p>
         
-        <div class="error-msg" id="errorMsg" style="display:none;">Kata sandi salah! Coba lagi (`ferwap2026`).</div>
+        <label>Hero Title (Judul Utama):</label>
+        <input type="text" id="input-title" placeholder="Contoh: Ferwap Music Entertainment">
 
-        <form id="loginForm" onsubmit="cekLogin(event)">
-            <div class="input-group">
-                <input type="password" id="passwordInput" placeholder="Masukkan Kata Sandi Rahasia" required autocomplete="off">
-            </div>
-            <button type="submit" class="btn-login">Verifikasi & Masuk</button>
-        </form>
+        <label>Hero Description (Deskripsi):</label>
+        <textarea id="input-desc" rows="3" placeholder="Deskripsi singkat label..."></textarea>
+
+        <button onclick="saveContent()">Simpan Perubahan</button>
+        <p id="save-status" style="color: #55ff55; margin-top: 10px;"></p>
+        
+        <br><hr style="border-color: #444; margin: 20px 0;">
+        <button onclick="logoutAdmin()" style="background: #444;">Logout</button>
     </div>
 
-    <!-- PANEL DASHBOARD (Awalnya Disembunyikan) -->
-    <div id="metadataDashboard" style="display: none;">
-        <div class="dashboard-header">
-            <div class="header-brand">
-                <a href="https://ferwap.com">
-                    <img src="https://ferwap.com/Ferwap.jpeg" alt="Ferwap Music Logo" class="brand-logo" style="margin:0;">
-                </a>
-                <div class="header-title">
-                    <span style="color: #ef4444; font-weight: bold; letter-spacing: 1.5px; font-size: 0.75rem; text-transform: uppercase;">FERWAP MUSIC</span>
-                    <h1>Ferwap Music Administration Portal</h1>
-                    <p>Internal Metadata, IPI, ISNI, Catalog & Global Database System</p>
-                </div>
-            </div>
-            <button class="btn-logout" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Log Out</button>
-        </div>
+    <script>
+        // Konfigurasi Supabase Kamu (Ganti dengan URL & Anon Key dari Project Supabase kamu)
+        const SUPABASE_URL = 'https://URL_PROJECT_KAMU.supabase.co';
+        const SUPABASE_ANON_KEY = 'PUBLIC_ANON_KEY_KAMU';
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        <div class="shortcuts-box">
-            <div class="shortcuts-title"><i class="fa-solid fa-arrow-up-right-from-square"></i> Distributor & Global Shortcuts</div>
-            <div class="shortcut-links">
-                <a href="https://routenote.com/login" target="_blank" class="shortcut-btn" style="background: #ef4444; color: #ffffff;">RouteNote Dashboard</a>
-                <a href="https://musicbrainz.org" target="_blank" class="shortcut-btn" style="background: #1f293d; color: #93c5fd;">MusicBrainz</a>
-                <a href="https://isni.org" target="_blank" class="shortcut-btn" style="background: #1f293d; color: #93c5fd;">ISNI Search</a>
-                <a href="https://repertoire.bmi.com/" target="_blank" class="shortcut-btn" style="background: #1f293d; color: #f43f5e;">BMI Repertoire</a>
-                <a href="https://formspree.io/forms" target="_blank" class="shortcut-btn" style="background: #1f293d; color: #34d399;">Formspree Inbox</a>
-            </div>
-        </div>
+        // Fungsi Login
+        async function loginAdmin() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const statusEl = document.getElementById('login-status');
 
-        <!-- Tabel Data -->
-        <div class="metadata-section">
-            <div class="section-title"><i class="fa-solid fa-users"></i> Artist Identifiers & Global Verification</div>
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Legal Name</th>
-                            <th>Stage</th>
-                            <th>Role</th>
-                            <th>IPI (BMI Search)</th>
-                            <th>ISNI Profile Link</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Abednego Totouw</td>
-                            <td><strong>3H3D</strong></td>
-                            <td><span class="badge">Singer / Songwriter / Producer</span></td>
-                            <td><a href="https://repertoire.bmi.com/Search/Search?main_entity=CREATOR&search_type=IPI&search_value=01369068221" target="_blank" class="code-link">01369068221</a></td>
-                            <td><a href="https://isni.org/isni/0000000538949572" target="_blank" style="color: #60a5fa; text-decoration: underline; font-family: monospace;">0000 0005 3894 9572</a></td>
-                        </tr>
-                        <tr>
-                            <td>Efer Totouw</td>
-                            <td><strong>Ferrson</strong></td>
-                            <td><span class="badge">Artist / Vocalist</span></td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>Sander Kosuko</td>
-                            <td><strong>ANDER</strong></td>
-                            <td><span class="badge">Singer / Songwriter</span></td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+            const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
 
-        <div class="metadata-section">
-            <div class="section-title"><i class="fa-solid fa-compact-disc"></i> Release Catalog & Master Rights</div>
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Track Title</th>
-                            <th>Artist</th>
-                            <th>ISRC</th>
-                            <th>UPC</th>
-                            <th>Master Owner</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Sogdai Ya</strong></td>
-                            <td>3H3D, Brecko & ANDER</td>
-                            <td><span class="mono">GXFHP2681603</span></td>
-                            <td><span class="mono">5064042035692</span></td>
-                            <td>Ferwap Music Ent.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Kwiregtori</strong></td>
-                            <td>3H3D, Ompi, ANDER & Melchior</td>
-                            <td><span class="mono">GXFHP2625957</span></td>
-                            <td><span class="mono">5064042140358</span></td>
-                            <td>Ferwap Music Ent.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+            if (error) {
+                statusEl.textContent = 'Gagal Login: ' + error.message;
+            } else {
+                statusEl.textContent = '';
+                checkAuth();
+            }
+        }
 
-    <footer>
-        <p>&copy; 2026 Ferwap Music Entertainment. All rights reserved.</p>
-    </footer>
-</div>
+        // Cek Status Sesi Login
+        async function checkAuth() {
+            const { data: { session } } = await supabaseClient.auth.getSession();
+            if (session) {
+                document.getElementById('login-section').classList.add('hidden');
+                document.getElementById('admin-panel').classList.remove('hidden');
+                loadCurrentData(); // Ambil data teks yang ada saat ini
+            } else {
+                document.getElementById('login-section').classList.remove('hidden');
+                document.getElementById('admin-panel').classList.add('hidden');
+            }
+        }
 
-<script src="app.js"></script>
+        // Ambil Data dari Supabase untuk Ditampilkan di Form
+        async function loadCurrentData() {
+            const { data, error } = await supabaseClient
+                .from('site_content')
+                .select('section_key, content_value');
+
+            if (!error && data) {
+                data.forEach(item => {
+                    if (item.section_key === 'hero_title') {
+                        document.getElementById('input-title').value = item.content_value;
+                    }
+                    if (item.section_key === 'hero_desc') {
+                        document.getElementById('input-desc').value = item.content_value;
+                    }
+                });
+            }
+        }
+
+        // Simpan Perubahan ke Supabase
+        async function saveContent() {
+            const newTitle = document.getElementById('input-title').value;
+            const newDesc = document.getElementById('input-desc').value;
+            const saveStatus = document.getElementById('save-status');
+
+            // Update baris 'hero_title'
+            await supabaseClient
+                .from('site_content')
+                .update({ content_value: newTitle })
+                .eq('section_key', 'hero_title');
+
+            // Update baris 'hero_desc'
+            await supabaseClient
+                .from('site_content')
+                .update({ content_value: newDesc })
+                .eq('section_key', 'hero_desc');
+
+            saveStatus.textContent = 'Berhasil disimpan! Web utama sudah terperbarui.';
+            setTimeout(() => { saveStatus.textContent = ''; }, 4000);
+        }
+
+        // Fungsi Logout
+        async function logoutAdmin() {
+            await supabaseClient.auth.signOut();
+            checkAuth();
+        }
+
+        // Jalankan pengecekan sesi saat halaman pertama kali dibuka
+        checkAuth();
+    </script>
 </body>
 </html>
